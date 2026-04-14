@@ -1,0 +1,31 @@
+---
+import "../styles/global.css";
+
+const { title = "회사명 | 건축설계", description = "회사 소개 사이트" } = Astro.props;
+---
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <header class="header wrap">
+      <a class="brand" href="/">회사명</a>
+      <nav class="nav">
+        <a href="/">홈</a>
+        <a href="/about/">회사소개</a>
+      </nav>
+    </header>
+
+    <main class="wrap">
+      <slot />
+    </main>
+
+    <footer class="footer wrap">
+      <p>© 2026 회사명. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
