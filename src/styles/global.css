@@ -38,7 +38,7 @@ body {
   font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   font-weight: 400;
   line-height: 1.7;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.012em;
 }
 
 a {
@@ -62,7 +62,7 @@ p {
 h1,
 h2,
 h3 {
-  letter-spacing: -0.04em;
+  letter-spacing: -0.028em;
   font-weight: 800;
 }
 
@@ -145,7 +145,7 @@ p {
   color: var(--accent);
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.132em;
 }
 
 .quick-page-nav__link:hover {
@@ -187,7 +187,7 @@ p {
   font-size: clamp(38px, 2.6vw, 50px);
   font-weight: 800;
   line-height: 0.95;
-  letter-spacing: 0.057em;
+  letter-spacing: 0.0513em;
 }
 
 .brand-name {
@@ -331,7 +331,7 @@ p {
   color: var(--accent);
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.176em;
   text-transform: uppercase;
 }
 
@@ -503,7 +503,7 @@ p {
 .stage-card__badge span {
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.154em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -529,7 +529,7 @@ p {
   display: inline;
   color: #fff;
   font-size: clamp(38px, 4.25vw, 58px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.7;
   background: rgba(20, 92, 183, 0.9);
   box-shadow:
@@ -589,7 +589,7 @@ p {
   color: var(--accent);
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.154em;
   text-transform: uppercase;
 }
 
@@ -1114,7 +1114,7 @@ p {
   max-width: 1160px;
   color: var(--text);
   font-size: clamp(36px, 3.55vw, 54px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.12;
   text-wrap: auto;
 }
@@ -1297,7 +1297,7 @@ p {
   color: var(--accent);
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.132em;
 }
 
 .portfolio-tab-link:hover {
@@ -1639,7 +1639,7 @@ p {
   color: var(--accent-dark);
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.176em;
   text-transform: uppercase;
 }
 
@@ -1779,7 +1779,7 @@ p {
 .location-marker strong {
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.154em;
 }
 
 .location-marker__dot {
@@ -1851,7 +1851,7 @@ p {
   color: var(--accent);
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.176em;
   text-transform: uppercase;
 }
 
