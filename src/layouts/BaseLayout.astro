@@ -60,6 +60,23 @@ const navItems = [
       </div>
     </header>
 
+    <nav class="quick-page-nav" data-scroll-page-nav aria-label="빠른 페이지 이동" aria-hidden="true">
+      <div class="wrap quick-page-nav__inner">
+        {
+          navItems.map((item, index) => (
+            <a
+              class:list={["quick-page-nav__link", item.isActive && "is-active"]}
+              href={item.href}
+              aria-current={item.isActive ? "page" : undefined}
+            >
+              <span class="quick-page-nav__index">{String(index + 1).padStart(2, "0")}</span>
+              <span>{item.label}</span>
+            </a>
+          ))
+        }
+      </div>
+    </nav>
+
     <main class="site-main">
       <div class="wrap">
         <slot />
@@ -96,8 +113,8 @@ const navItems = [
           <div class="footer-column">
             <p class="footer-label">Contact</p>
             <div class="footer-contact">
-              <a href="mailto:shjj2014@naver.com">협업 문의: shjj2014@naver.com</a>
-              <a href="tel:0222023293">전화: 02-2202-3293</a>
+              <p>협업 문의: shjj2014@naver.com</p>
+              <p>전화: 02-2202-3293</p>
               <p>서울특별시 송파구 오금로 148, 302호 (05620)</p>
             </div>
           </div>
@@ -106,5 +123,43 @@ const navItems = [
         <p class="footer-copy">COPYRIGHT © SHJJ ARCHITECTS. ALL RIGHTS RESERVED.</p>
       </div>
     </footer>
+
+    <script is:inline>
+      (() => {
+        const header = document.querySelector(".site-header");
+        const quickNav = document.querySelector("[data-scroll-page-nav]");
+        const firstBlock = document.querySelector(".stage-card, .page-hero");
+
+        if (!header || !quickNav || !firstBlock) return;
+
+        let ticking = false;
+
+        const updateQuickNav = () => {
+          const headerHeight = header.offsetHeight;
+          const blockBottom = firstBlock.getBoundingClientRect().bottom;
+          const shouldShow = blockBottom <= headerHeight + 10;
+
+          document.documentElement.style.setProperty("--site-header-height", `${headerHeight}px`);
+          quickNav.classList.toggle("is-visible", shouldShow);
+          quickNav.setAttribute("aria-hidden", String(!shouldShow));
+          ticking = false;
+        };
+
+        const requestUpdate = () => {
+          if (ticking) return;
+          ticking = true;
+          window.requestAnimationFrame(updateQuickNav);
+        };
+
+        window.addEventListener("scroll", requestUpdate, { passive: true });
+        window.addEventListener("resize", requestUpdate);
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", updateQuickNav, { once: true });
+        } else {
+          updateQuickNav();
+        }
+      })();
+    </script>
   </body>
 </html>
