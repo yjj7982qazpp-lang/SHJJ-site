@@ -1,8 +1,12 @@
 ---
 import "../styles/global.css";
 
-const { title = "(주)신화중재기술사 건축사사무소 | 건축설계", description = "회사 소개 사이트" } = Astro.props;
+const {
+  title = "(주)신화중재기술사 건축사사무소 | 건축설계",
+  description = "공동주택, 주거단지, 리모델링, 인허가 협의 등 건축설계 관련 업무를 수행하는 건축사사무소입니다.",
+} = Astro.props;
 ---
+
 <!doctype html>
 <html lang="ko">
   <head>
@@ -10,22 +14,39 @@ const { title = "(주)신화중재기술사 건축사사무소 | 건축설계", 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
-    <header class="header wrap">
-      <a class="brand" href="/">(주)신화중재기술사 건축사사무소</a>
-      <nav class="nav">
-        <a href="/">홈</a>
-        <a href="/about/">회사소개</a>
-      </nav>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark">SHJJ ARCHITECTS</span>
+          <span class="brand-name">(주)신화중재기술사 건축사사무소</span>
+        </a>
+
+        <nav class="nav">
+          <a href="/">홈</a>
+          <a href="/about/">회사소개</a>
+          <a href="/#contact">문의</a>
+        </nav>
+      </div>
     </header>
 
-    <main class="wrap">
-      <slot />
+    <main class="site-main">
+      <div class="wrap">
+        <slot />
+      </div>
     </main>
 
-    <footer class="footer wrap">
-      <p>© 2026 (주)신화중재기술사 건축사사무소. All rights reserved.</p>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <p class="footer-brand">(주)신화중재기술사 건축사사무소</p>
+        <div class="footer-meta">
+          <p>Architecture / Planning / Consulting</p>
+          <p>© 2026 SHJJ Architects. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
