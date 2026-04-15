@@ -8,242 +8,169 @@ import PageSwitch from "../components/PageSwitch.astro";
   description="공동주택, 주거단지, 리모델링, 인허가 협의까지 실현 가능한 흐름을 설계하는 건축사사무소입니다."
 >
   <section class="hero-home">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow">RESIDENTIAL ARCHITECTURE / PLANNING / COORDINATION</p>
-        <h1>주거와 도시의 흐름을 읽고 실현 가능한 설계로 연결합니다.</h1>
-        <p class="lead">
-          (주)신화중재기술사 건축사사무소는 공동주택, 주거단지, 리모델링, 인허가 협의
-          업무를 수행하며, 대지의 조건과 법규 검토, 사업 일정과 협의 절차를 함께 고려한
-          실현 가능한 설계안을 제안합니다.
-        </p>
-
-        <PageSwitch currentPath={Astro.url.pathname} />
-
-        <div class="hero-tiles">
-          <a class="showcase-card" href="/about/">
-            <div class="showcase-frame showcase-frame--planning"></div>
-            <div class="showcase-meta">
-              <span>Planning</span>
-              <strong>업무 기준과 진행 방식</strong>
-            </div>
-          </a>
-
-          <a class="showcase-card" href="/portfolio/">
-            <div class="showcase-frame showcase-frame--housing"></div>
-            <div class="showcase-meta">
-              <span>Housing</span>
-              <strong>주거 프로젝트 포트폴리오</strong>
-            </div>
-          </a>
-
-          <a class="showcase-card" href="/performance/">
-            <div class="showcase-frame showcase-frame--coordination"></div>
-            <div class="showcase-meta">
-              <span>Coordination</span>
-              <strong>주요 실적과 협의 범위</strong>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <aside class="studio-panel">
-        <div class="panel-head">
-          <p class="panel-label">Studio Framework</p>
-          <span class="panel-mark">SHJJ</span>
+    <div class="stage-card">
+      <div class="stage-card__visual">
+        <div class="stage-card__badge">
+          <span>Second Concept</span>
+          <strong>2026</strong>
         </div>
 
-        <div class="panel-stack">
-          <article class="panel-item">
+        <div class="stage-card__content">
+          <p class="eyebrow">RESIDENTIAL / PLANNING / COORDINATION</p>
+          <h1 class="stage-card__title">주거 프로젝트의 방향을 읽고 설계와 협의를 하나의 흐름으로 제안합니다.</h1>
+          <p class="lead">
+            (주)신화중재기술사 건축사사무소는 공동주택, 주거단지, 리모델링, 인허가 협의
+            업무를 수행하며, 대지의 조건과 법규 검토, 사업 일정과 실무 조율까지 고려한
+            실현 가능한 설계안을 제안합니다.
+          </p>
+
+          <PageSwitch currentPath={Astro.url.pathname} />
+        </div>
+
+        <div class="stage-card__overview">
+          <article class="stage-card__overview-item">
+            <span>Planning</span>
             <strong>공동주택 설계</strong>
-            <p>배치, 평면, 공용부 계획의 완성도를 종합적으로 검토합니다.</p>
+            <p>배치와 평면, 공용부 계획의 완성도를 대지 조건과 함께 검토합니다.</p>
           </article>
-          <article class="panel-item">
+
+          <article class="stage-card__overview-item">
+            <span>Housing</span>
             <strong>주거단지 검토</strong>
-            <p>대지 조건과 동선 체계를 정리해 단지 계획의 기본 질서를 세웁니다.</p>
+            <p>생활 동선과 환경 흐름을 정리해 단지 계획의 기본 질서를 세웁니다.</p>
           </article>
-          <article class="panel-item">
-            <strong>리모델링 대응</strong>
-            <p>기존 공간의 구조와 활용 조건을 검토해 현실적인 개선 방향을 제안합니다.</p>
-          </article>
-          <article class="panel-item">
-            <strong>인허가 협의</strong>
-            <p>관계 기관 협의와 실무 조율이 끊기지 않도록 단계별로 대응합니다.</p>
+
+          <article class="stage-card__overview-item">
+            <span>Coordination</span>
+            <strong>리모델링 · 협의 대응</strong>
+            <p>기존 공간의 활용 조건과 인허가 조율이 끊기지 않도록 실무 흐름을 연결합니다.</p>
           </article>
         </div>
 
-        <div class="metric-row">
-          <div class="metric-card">
-            <strong>2014</strong>
-            <span>축적된 실무 기반</span>
-          </div>
-          <div class="metric-card">
-            <strong>주거 설계</strong>
-            <span>공동주택 · 주거단지 중심</span>
-          </div>
-          <div class="metric-card">
-            <strong>협의 대응</strong>
-            <span>인허가와 실행 단계 조율</span>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <section class="section-shell">
-    <div class="section-intro">
-      <p class="section-kicker">Design Principle</p>
-      <h2>대지의 조건과 사업의 맥락을 읽고, 오래 작동하는 질서를 설계합니다.</h2>
-    </div>
-
-    <div class="frame-grid">
-      <div class="material-board">
-        <div class="board-cube board-cube--large"></div>
-        <div class="board-cube board-cube--small"></div>
-        <div class="board-line board-line--top"></div>
-        <div class="board-line board-line--bottom"></div>
-
-        <div class="board-note">
-          <span>Framework</span>
-          <strong>Planning / Regulation / Coordination</strong>
-          <p>계획, 법규, 협의가 한 방향 안에서 정리될 때 설계의 완성도도 높아집니다.</p>
-        </div>
-      </div>
-
-      <div class="copy-block">
-        <p>
-          주거 프로젝트는 배치와 동선, 채광과 공용부 구성, 법규 검토와 사업 조건이 함께
-          맞물릴 때 비로소 안정적인 질서를 갖추게 됩니다.
-        </p>
-        <p>
-          신화중재기술사 건축사사무소는 초기 기획의 방향을 실제 진행 과정에 연결하고,
-          협의와 실행 단계에서도 설계의 논리가 흔들리지 않도록 대응합니다.
-        </p>
-
-        <div class="mini-list">
-          <div class="mini-item">
-            <span>01</span>
-            <p>배치와 동선, 공용부와 전용부의 관계를 먼저 정리합니다.</p>
-          </div>
-          <div class="mini-item">
-            <span>02</span>
-            <p>법규 검토와 사업 일정, 실현 가능성을 동시에 검토합니다.</p>
-          </div>
-          <div class="mini-item">
-            <span>03</span>
-            <p>설계안 제시 이후의 협의와 조율까지 고려해 대응합니다.</p>
-          </div>
+        <div class="stage-card__pager" aria-hidden="true">
+          <span class="stage-card__pager-dot"></span>
+          <span class="stage-card__pager-dot is-active"></span>
+          <span class="stage-card__pager-dot"></span>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section-shell section-shell--tinted">
-    <div class="section-intro">
-      <p class="section-kicker">Core Services</p>
-      <h2>주요 업무는 공동주택과 주거단지, 리모델링, 인허가 협의까지 하나의 기준 안에서 수행합니다.</h2>
-    </div>
-
-    <div class="service-river">
-      <article class="river-card">
-        <span class="river-index">01</span>
-        <h3>건축설계</h3>
-        <p>
-          기본계획부터 설계도서 작성, 대안 비교 검토까지 프로젝트의 기본 방향을
-          구체화합니다.
-        </p>
-        <div class="river-tags">
-          <span>기본계획</span>
-          <span>설계도서</span>
-          <span>대안 검토</span>
-        </div>
-      </article>
-
-      <article class="river-card">
-        <span class="river-index">02</span>
-        <h3>공동주택 · 주거단지</h3>
-        <p>
-          배치 계획, 동선 체계, 공용부와 전용부의 관계를 검토해 주거 환경의 완성도를
-          높입니다.
-        </p>
-        <div class="river-tags">
-          <span>주거 계획</span>
-          <span>공간 구성</span>
-          <span>환경 검토</span>
-        </div>
-      </article>
-
-      <article class="river-card">
-        <span class="river-index">03</span>
-        <h3>리모델링 · 인허가 협의</h3>
-        <p>
-          기존 건축물의 구조와 활용 조건을 검토하고 인허가 협의와 조정이 필요한 지점을
-          체계적으로 대응합니다.
-        </p>
-        <div class="river-tags">
-          <span>리모델링</span>
-          <span>용도 검토</span>
-          <span>협의 대응</span>
-        </div>
-      </article>
-    </div>
-  </section>
-
   <section class="section-shell">
-    <div class="section-intro">
-      <p class="section-kicker">Explore</p>
-      <h2>필요한 정보를 목적에 맞게 바로 확인할 수 있도록 페이지를 분리했습니다.</h2>
-    </div>
-
-    <div class="preview-grid">
-      <a class="preview-card preview-card--portfolio" href="/portfolio/">
-        <span class="preview-kicker">Portfolio</span>
-        <h3>주거 중심 포트폴리오</h3>
-        <p>대표 업무 유형과 설계 접근 방식을 정리했습니다.</p>
-        <span class="preview-link">포트폴리오 보기</span>
+    <div class="home-module-grid">
+      <a class="module-card module-card--feature" href="/portfolio/">
+        <div class="module-card__body">
+          <span class="module-card__eyebrow">WORKS</span>
+          <h2>주거 중심 프로젝트 포트폴리오</h2>
+          <p>공동주택, 주거단지, 리모델링까지 실제로 다뤄 온 대표 업무 유형을 정리했습니다.</p>
+          <span class="module-card__link">포트폴리오 보기</span>
+        </div>
+        <div class="module-card__placeholder module-card__placeholder--feature" aria-hidden="true"></div>
       </a>
 
-      <a class="preview-card preview-card--performance" href="/performance/">
-        <span class="preview-kicker">Performance</span>
+      <a class="module-card module-card--blue" href="/about/">
+        <span class="module-card__eyebrow">ABOUT</span>
+        <h3>사무소 소개와 설계 태도</h3>
+        <p>계획, 협의, 실행이 분리되지 않도록 보는 실무 기준과 작업 태도를 소개합니다.</p>
+      </a>
+
+      <a class="module-card module-card--performance" href="/performance/">
+        <span class="module-card__eyebrow">PERFORMANCE</span>
         <h3>주요 실적과 수행 범위</h3>
-        <p>수행해 온 업무 범위와 실무 축을 한눈에 볼 수 있습니다.</p>
-        <span class="preview-link">주요 실적 보기</span>
+        <p>지속해 온 업무 축과 실무 대응 범위를 한눈에 읽을 수 있도록 정리했습니다.</p>
       </a>
 
-      <a class="preview-card preview-card--contact" href="/contact/">
-        <span class="preview-kicker">Contact</span>
-        <h3>협업 문의와 진행 흐름</h3>
-        <p>협업 문의 시 필요한 정보와 검토 흐름을 확인할 수 있습니다.</p>
-        <span class="preview-link">협업 문의 보기</span>
+      <a class="module-card module-card--contact" href="/contact/">
+        <span class="module-card__eyebrow">CONTACT</span>
+        <h3>협업 문의</h3>
+        <p>프로젝트 단계와 검토 범위를 중심으로 문의 흐름을 안내합니다.</p>
+      </a>
+
+      <a class="module-card module-card--location" href="/location/">
+        <span class="module-card__eyebrow">LOCATION</span>
+        <h3>오시는 길</h3>
+        <p>사무소 주소와 약도, 지도 연결 정보를 한곳에서 확인하실 수 있습니다.</p>
       </a>
     </div>
   </section>
 
-  <section class="section-shell section-shell--contact">
-    <div class="contact-shell">
-      <div class="contact-copy">
+  <section class="section-shell section-shell--muted">
+    <div class="section-intro">
+      <p class="section-kicker">Services</p>
+      <h2>주거 설계에 필요한 검토와 조율을 단계별로 수행합니다.</h2>
+    </div>
+
+    <div class="service-board">
+      <article class="service-tile">
+        <div class="service-tile__icon service-tile__icon--plan" aria-hidden="true"></div>
+        <span class="preview-kicker">01 Planning</span>
+        <h3>기획 및 기본계획</h3>
+        <p>사업 조건, 대지 여건, 법규 기준을 함께 검토해 계획의 기본 방향을 세웁니다.</p>
+      </article>
+
+      <article class="service-tile">
+        <div class="service-tile__icon service-tile__icon--housing" aria-hidden="true"></div>
+        <span class="preview-kicker">02 Housing</span>
+        <h3>공동주택 · 주거단지</h3>
+        <p>배치, 동선, 공용부와 전용부의 관계를 검토해 주거 환경의 완성도를 높입니다.</p>
+      </article>
+
+      <article class="service-tile">
+        <div class="service-tile__icon service-tile__icon--remodel" aria-hidden="true"></div>
+        <span class="preview-kicker">03 Remodeling</span>
+        <h3>리모델링 검토</h3>
+        <p>기존 건축물의 구조와 활용 조건을 검토해 현실적인 재정비 방향을 제안합니다.</p>
+      </article>
+
+      <article class="service-tile">
+        <div class="service-tile__icon service-tile__icon--coordination" aria-hidden="true"></div>
+        <span class="preview-kicker">04 Coordination</span>
+        <h3>인허가 협의</h3>
+        <p>프로젝트가 실제로 진행될 수 있도록 협의와 실행 단계의 실무 조율을 이어갑니다.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="insight-grid">
+      <article class="insight-card insight-card--wide">
+        <span class="module-card__eyebrow">INSIGHT</span>
+        <h3>설계는 화면보다도 흐름의 질서를 만드는 일이라고 생각합니다.</h3>
+        <p>
+          초기의 방향 설정이 이후 협의와 실행 단계에서 흔들리지 않도록, 대지의 조건과 사업의
+          맥락을 하나의 기준 안에서 정리하는 방식을 중요하게 생각합니다.
+        </p>
+      </article>
+
+      <a class="insight-card insight-card--accent" href="/about/">
+        <span class="module-card__eyebrow">ABOUT</span>
+        <h3>Studio Attitude</h3>
+        <p>오래 작동하는 질서를 만드는 설계 태도와 실무 기준을 소개합니다.</p>
+      </a>
+
+      <a class="insight-card insight-card--outline" href="/location/">
+        <span class="module-card__eyebrow">LOCATION</span>
+        <h3>Directions</h3>
+        <p>방문 전 주소와 약도, 지도 연결을 바로 확인하실 수 있습니다.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="home-cta">
+      <div class="home-cta__copy">
         <p class="section-kicker">Collaboration</p>
-        <h2>프로젝트의 조건과 검토 범위를 전달해 주시면, 적합한 설계 방향과 협의 흐름을 함께 살펴보겠습니다.</h2>
+        <h2>프로젝트의 조건과 단계, 검토 범위를 전달해 주시면 적합한 설계 방향과 협의 흐름을 함께 살펴보겠습니다.</h2>
         <p>
           공동주택, 주거단지, 리모델링, 인허가 협의와 관련한 협업 문의는 메일 또는 전화로
           남겨주시면 검토 후 안내드리겠습니다.
         </p>
-        <a class="btn btn-primary" href="/contact/">협업 문의 바로가기</a>
       </div>
 
-      <div class="contact-detail">
-        <div class="detail-row">
-          <span>협업 문의</span>
-          <a href="mailto:shjj2014@naver.com">shjj2014@naver.com</a>
-        </div>
-        <div class="detail-row">
-          <span>전화</span>
-          <a href="tel:0222023293">02-2202-3293</a>
-        </div>
-        <div class="detail-row">
-          <span>오시는 곳</span>
-          <p>서울특별시 송파구 오금로 148, 302호 (05620)</p>
-        </div>
+      <div class="home-cta__actions">
+        <a class="home-cta__link" href="mailto:shjj2014@naver.com">shjj2014@naver.com</a>
+        <a class="home-cta__link" href="tel:0222023293">02-2202-3293</a>
+        <a class="btn btn-primary" href="/contact/">협업 문의 바로가기</a>
       </div>
     </div>
   </section>
