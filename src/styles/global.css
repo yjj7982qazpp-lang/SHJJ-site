@@ -450,8 +450,8 @@ p {
 .stage-card__title {
   display: inline;
   color: #fff;
-  font-size: clamp(34px, 3.7vw, 50px);
-  line-height: 1.48;
+  font-size: clamp(38px, 4.25vw, 58px);
+  line-height: 1.7;
   background: rgba(20, 92, 183, 0.9);
   box-shadow:
     10px 0 0 rgba(20, 92, 183, 0.9),
@@ -1005,7 +1005,7 @@ p {
 .page-hero h1 {
   max-width: 1160px;
   color: var(--text);
-  font-size: clamp(32px, 3vw, 46px);
+  font-size: clamp(36px, 3.55vw, 54px);
   line-height: 1.12;
   text-wrap: auto;
 }
@@ -1594,7 +1594,7 @@ p {
   }
 
   .page-hero h1 {
-    font-size: clamp(30px, 7.5vw, 40px);
+    font-size: clamp(34px, 8.5vw, 48px);
   }
 
   .lead,
@@ -1642,8 +1642,8 @@ p {
   }
 
   .stage-card__title {
-    font-size: clamp(30px, 8vw, 40px);
-    line-height: 1.38;
+    font-size: clamp(34px, 9vw, 50px);
+    line-height: 1.59;
   }
 
   .service-tile h3 {
