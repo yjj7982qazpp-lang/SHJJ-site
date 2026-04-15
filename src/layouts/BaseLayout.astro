@@ -19,6 +19,7 @@ const navItems = [
   { href: "/portfolio/", label: "포트폴리오" },
   { href: "/performance/", label: "주요 실적" },
   { href: "/contact/", label: "협업 문의" },
+  { href: "/location/", label: "오시는 길" },
 ].map((item) => ({
   ...item,
   isActive: currentPath === normalizePath(item.href),
@@ -83,6 +84,7 @@ const navItems = [
               <a href="/portfolio/">포트폴리오</a>
               <a href="/performance/">주요 실적</a>
               <a href="/contact/">협업 문의</a>
+              <a href="/location/">오시는 길</a>
             </div>
           </div>
 
