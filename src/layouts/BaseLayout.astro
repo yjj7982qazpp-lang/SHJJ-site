@@ -5,6 +5,24 @@ const {
   title = "(주)신화중재기술사 건축사사무소 | 주거와 도시를 위한 건축설계",
   description = "공동주택, 주거단지, 리모델링, 인허가 협의까지 실현 가능한 흐름을 설계하는 건축사사무소입니다.",
 } = Astro.props;
+
+const normalizePath = (path) => {
+  if (!path) return "/";
+  return path !== "/" && path.endsWith("/") ? path.slice(0, -1) : path;
+};
+
+const currentPath = normalizePath(Astro.url.pathname);
+
+const navItems = [
+  { href: "/", label: "홈" },
+  { href: "/about/", label: "회사소개" },
+  { href: "/portfolio/", label: "포트폴리오" },
+  { href: "/performance/", label: "주요 실적" },
+  { href: "/contact/", label: "협업 문의" },
+].map((item) => ({
+  ...item,
+  isActive: currentPath === normalizePath(item.href),
+}));
 ---
 
 <!doctype html>
@@ -26,11 +44,17 @@ const {
         </a>
 
         <nav class="nav">
-          <a href="/">홈</a>
-          <a href="/about/">회사소개</a>
-          <a href="/portfolio/">포트폴리오</a>
-          <a href="/performance/">주요 실적</a>
-          <a href="/contact/">협업 문의</a>
+          {
+            navItems.map((item) => (
+              <a
+                class:list={["nav-link", item.isActive && "is-active"]}
+                href={item.href}
+                aria-current={item.isActive ? "page" : undefined}
+              >
+                <span>{item.label}</span>
+              </a>
+            ))
+          }
         </nav>
       </div>
     </header>

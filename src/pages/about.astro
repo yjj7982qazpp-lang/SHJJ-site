@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageSwitch from "../components/PageSwitch.astro";
 ---
 
 <BaseLayout
@@ -14,10 +15,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       인허가 협의 등 다양한 건축설계 업무를 수행해 왔습니다.
     </p>
 
-    <div class="page-actions">
-      <a class="btn btn-secondary" href="/portfolio/">포트폴리오</a>
-      <a class="btn btn-ghost" href="/contact/">협업 문의</a>
-    </div>
+    <PageSwitch currentPath={Astro.url.pathname} />
   </section>
 
   <section class="section-shell">

@@ -1,0 +1,139 @@
+---
+const placeName = "(주)신화중재기술사 건축사사무소";
+const roadAddress = "서울특별시 송파구 오금로 148, 302호";
+const postalCode = "05620";
+const address = `${roadAddress} (${postalCode})`;
+const addressQuery = encodeURIComponent(`${placeName} ${roadAddress}`);
+const kakaoMapUrl = `https://map.kakao.com/link/search/${addressQuery}`;
+const hasKakaoMapKey = Boolean(import.meta.env.PUBLIC_KAKAO_MAP_APP_KEY);
+const kakaoMapKey = import.meta.env.PUBLIC_KAKAO_MAP_APP_KEY;
+---
+
+<section class="section-shell section-shell--tinted">
+  <div class="section-intro">
+    <p class="section-kicker">Location</p>
+    <h2>오시는 길은 바로 확인할 수 있도록 약도와 지도 연결을 함께 제공합니다.</h2>
+  </div>
+
+  <div class="location-guide">
+    <div class="location-map-panel">
+      {
+        hasKakaoMapKey ? (
+          <>
+            <div
+              class="location-map-canvas"
+              data-location-map
+              data-address={roadAddress}
+              data-place={placeName}
+            ></div>
+            <script
+              src={`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoMapKey}&autoload=false&libraries=services`}
+            ></script>
+            <script is:inline>
+              (() => {
+                const initializeMap = () => {
+                  const containers = document.querySelectorAll("[data-location-map]");
+                  if (!window.kakao?.maps?.services || containers.length === 0) return;
+
+                  containers.forEach((container) => {
+                    if (container.dataset.mapReady === "true") return;
+
+                    const address = container.dataset.address;
+                    const place = container.dataset.place;
+                    const geocoder = new window.kakao.maps.services.Geocoder();
+
+                    geocoder.addressSearch(address, (result, status) => {
+                      if (status !== window.kakao.maps.services.Status.OK || !result[0]) return;
+
+                      const lat = Number(result[0].y);
+                      const lng = Number(result[0].x);
+                      const position = new window.kakao.maps.LatLng(lat, lng);
+
+                      const map = new window.kakao.maps.Map(container, {
+                        center: position,
+                        level: 3,
+                      });
+
+                      const marker = new window.kakao.maps.Marker({
+                        map,
+                        position,
+                      });
+
+                      const infoWindow = new window.kakao.maps.InfoWindow({
+                        content: `<div style="padding:8px 10px;font-size:13px;font-weight:600;">${place}</div>`,
+                      });
+
+                      infoWindow.open(map, marker);
+                      container.dataset.mapReady = "true";
+                    });
+                  });
+                };
+
+                const bootstrapMap = () => {
+                  if (!window.kakao?.maps) return;
+                  window.kakao.maps.load(initializeMap);
+                };
+
+                if (document.readyState === "loading") {
+                  document.addEventListener("DOMContentLoaded", bootstrapMap, { once: true });
+                } else {
+                  bootstrapMap();
+                }
+              })();
+            </script>
+          </>
+        ) : (
+          <div class="location-map-fallback" aria-hidden="true">
+            <div class="location-grid-line location-grid-line--horizontal"></div>
+            <div class="location-grid-line location-grid-line--vertical"></div>
+            <div class="location-grid-line location-grid-line--horizontal-secondary"></div>
+            <div class="location-grid-line location-grid-line--vertical-secondary"></div>
+            <div class="location-map-path"></div>
+            <div class="location-map-path location-map-path--secondary"></div>
+            <div class="location-marker">
+              <span class="location-marker__dot"></span>
+              <strong>SHJJ ARCHITECTS</strong>
+            </div>
+          </div>
+        )
+      }
+
+      <div class="location-map-badge">
+        <span>Office Map</span>
+        <strong>{placeName}</strong>
+      </div>
+    </div>
+
+    <div class="location-copy">
+      <p class="location-address">{address}</p>
+      <p>
+        방문 전 카카오맵에서 정확한 위치와 이동 경로를 확인하실 수 있도록 바로가기 버튼을 함께
+        제공합니다. 페이지 환경에 따라 실시간 지도 또는 정리된 약도 형식으로 안내됩니다.
+      </p>
+
+      <div class="location-actions">
+        <a class="btn btn-primary" href={kakaoMapUrl} target="_blank" rel="noreferrer">
+          카카오맵에서 보기
+        </a>
+        <a class="btn btn-secondary" href="/contact/">
+          협업 문의 남기기
+        </a>
+      </div>
+
+      <div class="location-notes">
+        <div class="location-note">
+          <span>사무소명</span>
+          <p>{placeName}</p>
+        </div>
+        <div class="location-note">
+          <span>도로명 주소</span>
+          <p>{roadAddress}</p>
+        </div>
+        <div class="location-note">
+          <span>우편번호</span>
+          <p>{postalCode}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

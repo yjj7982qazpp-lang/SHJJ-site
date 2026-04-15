@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageSwitch from "../components/PageSwitch.astro";
 ---
 
 <BaseLayout
@@ -13,6 +14,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       신화중재기술사 건축사사무소는 주거 중심 프로젝트를 기반으로 설계, 검토, 협의,
       리모델링 대응 업무를 지속적으로 수행해 왔습니다.
     </p>
+    <PageSwitch currentPath={Astro.url.pathname} />
   </section>
 
   <section class="section-shell">
@@ -35,13 +37,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="section-shell section-shell--tinted">
-    <div class="section-intro section-intro--right">
+  <section class="section-shell section-shell--tinted performance-scope">
+    <div class="section-intro performance-scope__intro">
       <p class="section-kicker">Main Scope</p>
       <h2>실제로 지속해 온 주요 수행 범위를 분명하게 보여드리는 편이 더 정직하다고 생각합니다.</h2>
     </div>
 
-    <div class="detail-grid">
+    <div class="detail-grid performance-scope__grid">
       <article class="detail-card">
         <span class="river-index">01</span>
         <h3>공동주택 계획 및 설계 대응</h3>
@@ -67,7 +69,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </article>
     </div>
 
-    <div class="note-box">
+    <div class="note-box performance-scope__note">
       <p class="section-kicker">Note</p>
       <p>
         구체적인 프로젝트 리스트와 세부 자료는 협업 문의 시 안내드릴 수 있습니다.

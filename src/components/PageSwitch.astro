@@ -1,0 +1,35 @@
+---
+const { currentPath = "/" } = Astro.props;
+
+const normalizePath = (path) => {
+  if (!path) return "/";
+  return path !== "/" && path.endsWith("/") ? path.slice(0, -1) : path;
+};
+
+const normalizedCurrentPath = normalizePath(currentPath);
+
+const links = [
+  { href: "/about/", label: "회사소개" },
+  { href: "/portfolio/", label: "포트폴리오" },
+  { href: "/performance/", label: "주요 실적" },
+  { href: "/contact/", label: "협업 문의" },
+];
+---
+
+<nav class="page-switch" aria-label="페이지 바로가기">
+  {
+    links.map((link) => {
+      const isActive = normalizedCurrentPath === normalizePath(link.href);
+
+      return (
+        <a
+          class:list={["page-switch__link", isActive && "is-active"]}
+          href={link.href}
+          aria-current={isActive ? "page" : undefined}
+        >
+          <span class="page-switch__text">{link.label}</span>
+        </a>
+      );
+    })
+  }
+</nav>

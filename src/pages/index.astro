@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageSwitch from "../components/PageSwitch.astro";
 ---
 
 <BaseLayout
@@ -17,12 +18,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           실현 가능한 설계안을 제안합니다.
         </p>
 
-        <div class="action-cluster">
-          <a class="btn btn-primary" href="/about/">회사소개</a>
-          <a class="btn btn-secondary" href="/portfolio/">포트폴리오</a>
-          <a class="btn btn-secondary" href="/performance/">주요 실적</a>
-          <a class="btn btn-ghost" href="/contact/">협업 문의</a>
-        </div>
+        <PageSwitch currentPath={Astro.url.pathname} />
 
         <div class="hero-tiles">
           <a class="showcase-card" href="/about/">
