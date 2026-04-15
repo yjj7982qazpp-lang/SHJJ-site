@@ -104,21 +104,38 @@ const categories = [
     <PageSwitch currentPath={Astro.url.pathname} />
   </section>
 
-  <section class="section-shell">
-    <div class="portfolio-tabs" aria-label="포트폴리오 업무 범위">
-      {categories.map((category) => <a href={`#${category.id}`}>{category.label}</a>)}
+  <section class="section-shell portfolio-overview" data-portfolio-overview>
+    <div class="section-intro">
+      <p class="section-kicker">Portfolio Index</p>
+      <h2>확인하고 싶은 업무 범위를 선택해 주세요.</h2>
+    </div>
+
+    <div class="portfolio-category-menu" aria-label="포트폴리오 업무 범위">
+      {
+        categories.map((category, index) => (
+          <a class="portfolio-category-card" href={`#${category.id}`} data-portfolio-open={category.id}>
+            <span class="river-index">{String(index + 1).padStart(2, "0")}</span>
+            <span class="module-card__eyebrow">{category.english}</span>
+            <h3>{category.label}</h3>
+            <p>{category.description}</p>
+            <span class="portfolio-category-card__link">실적 보기</span>
+          </a>
+        ))
+      }
     </div>
   </section>
 
   {
     categories.map((category) => (
-      <section class="section-shell portfolio-category" id={category.id}>
-        <div class="section-intro">
-          <p class="section-kicker">{category.english}</p>
-          <h2>{category.label}</h2>
+      <section class="section-shell portfolio-panel" id={category.id} data-portfolio-panel={category.id}>
+        <div class="portfolio-panel__head">
+          <a class="portfolio-back" href="/portfolio/" data-portfolio-back>뒤로가기</a>
+          <div class="section-intro">
+            <p class="section-kicker">{category.english}</p>
+            <h2>{category.label}</h2>
+          </div>
+          <p class="portfolio-category__description">{category.description}</p>
         </div>
-
-        <p class="portfolio-category__description">{category.description}</p>
 
         <div class="portfolio-project-grid">
           {category.projects.map((project, index) => (
@@ -148,4 +165,72 @@ const categories = [
       </p>
     </div>
   </section>
+
+  <script is:inline>
+    (() => {
+      const overview = document.querySelector("[data-portfolio-overview]");
+      const panels = Array.from(document.querySelectorAll("[data-portfolio-panel]"));
+      const openLinks = Array.from(document.querySelectorAll("[data-portfolio-open]"));
+      const backLinks = Array.from(document.querySelectorAll("[data-portfolio-back]"));
+      const panelIds = new Set(panels.map((panel) => panel.dataset.portfolioPanel));
+
+      if (!overview || panels.length === 0) return;
+
+      const showOverview = () => {
+        overview.hidden = false;
+        panels.forEach((panel) => {
+          panel.hidden = true;
+          panel.classList.remove("is-active");
+        });
+      };
+
+      const showPanel = (id) => {
+        if (!panelIds.has(id)) {
+          showOverview();
+          return;
+        }
+
+        overview.hidden = true;
+        panels.forEach((panel) => {
+          const isActive = panel.dataset.portfolioPanel === id;
+          panel.hidden = !isActive;
+          panel.classList.toggle("is-active", isActive);
+        });
+
+        const activePanel = document.querySelector(`[data-portfolio-panel="${id}"]`);
+        activePanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+      };
+
+      const syncFromHash = () => {
+        const id = window.location.hash.replace("#", "");
+        if (id) {
+          showPanel(id);
+        } else {
+          showOverview();
+        }
+      };
+
+      openLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const id = link.dataset.portfolioOpen;
+          if (!id) return;
+          event.preventDefault();
+          history.pushState(null, "", `#${id}`);
+          showPanel(id);
+        });
+      });
+
+      backLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          history.pushState(null, "", window.location.pathname);
+          showOverview();
+          overview.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      window.addEventListener("hashchange", syncFromHash);
+      syncFromHash();
+    })();
+  </script>
 </BaseLayout>
