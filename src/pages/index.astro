@@ -9,10 +9,10 @@ import PageSwitch from "../components/PageSwitch.astro";
 >
   <section class="hero-home">
     <div class="stage-card">
-      <div class="stage-card__visual">
+      <div class="stage-card__visual" data-stage-visual data-stage-index="0">
         <div class="stage-card__badge">
-          <span>Second Concept</span>
-          <strong>2026</strong>
+          <span>Residential Practice</span>
+          <strong>Since 2014</strong>
         </div>
 
         <div class="stage-card__content">
@@ -47,14 +47,53 @@ import PageSwitch from "../components/PageSwitch.astro";
           </article>
         </div>
 
-        <div class="stage-card__pager" aria-hidden="true">
-          <span class="stage-card__pager-dot"></span>
-          <span class="stage-card__pager-dot is-active"></span>
-          <span class="stage-card__pager-dot"></span>
+        <div class="stage-card__pager" aria-label="대표 화면 선택">
+          <button class="stage-card__pager-dot is-active" type="button" data-stage-dot="0" aria-label="첫 번째 대표 화면"></button>
+          <button class="stage-card__pager-dot" type="button" data-stage-dot="1" aria-label="두 번째 대표 화면"></button>
+          <button class="stage-card__pager-dot" type="button" data-stage-dot="2" aria-label="세 번째 대표 화면"></button>
         </div>
       </div>
     </div>
   </section>
+
+  <script is:inline>
+    (() => {
+      const visual = document.querySelector("[data-stage-visual]");
+      const dots = Array.from(document.querySelectorAll("[data-stage-dot]"));
+      if (!visual || dots.length === 0) return;
+
+      let activeIndex = 0;
+      let timerId;
+
+      const setStage = (index) => {
+        activeIndex = index;
+        visual.dataset.stageIndex = String(index);
+
+        dots.forEach((dot, dotIndex) => {
+          const isActive = dotIndex === index;
+          dot.classList.toggle("is-active", isActive);
+          dot.setAttribute("aria-pressed", String(isActive));
+        });
+      };
+
+      const restartTimer = () => {
+        window.clearInterval(timerId);
+        timerId = window.setInterval(() => {
+          setStage((activeIndex + 1) % dots.length);
+        }, 5200);
+      };
+
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          setStage(Number(dot.dataset.stageDot));
+          restartTimer();
+        });
+      });
+
+      setStage(0);
+      restartTimer();
+    })();
+  </script>
 
   <section class="section-shell">
     <div class="home-module-grid">
