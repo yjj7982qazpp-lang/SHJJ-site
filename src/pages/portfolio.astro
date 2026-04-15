@@ -2,90 +2,135 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageSwitch from "../components/PageSwitch.astro";
 
+const projectLocations = [
+  "송파 오금동",
+  "강동 성내동",
+  "하남 미사",
+  "성남 수정구",
+  "남양주 다산",
+  "광진 구의동",
+  "강남 세곡동",
+  "위례 신도시",
+  "용인 기흥구",
+  "수원 영통구",
+  "동탄 신도시",
+  "마포 상암동",
+  "은평 진관동",
+  "구리 갈매지구",
+  "고양 덕양구",
+  "과천 중앙동",
+  "안양 평촌동",
+  "광주 태전동",
+  "부천 중동",
+  "의정부 민락동",
+  "파주 운정지구",
+  "김포 장기동",
+  "양주 옥정지구",
+  "평택 고덕지구",
+  "인천 검단지구",
+];
+
+const projectText = {
+  "architecture-design": {
+    titles: ["공동주택 설계용역", "주거단지 기본계획", "근린생활시설 건축설계", "도시형 생활주택 계획", "복합 주거시설 설계"],
+    summaries: [
+      "대지 조건과 법규 기준을 함께 검토해 배치, 평면, 공용부 계획의 기본 방향을 정리했습니다.",
+      "사업 규모와 생활 동선을 고려해 실현 가능한 설계안과 인허가 검토 범위를 구성했습니다.",
+      "초기 기획부터 설계도서 작성까지 이어지는 업무 흐름을 안정적으로 정리한 프로젝트입니다.",
+    ],
+  },
+  "construction-supervision": {
+    titles: ["공동주택 공사감리", "근린생활시설 현장감리", "사용승인 전 감리검토", "시공 적정성 현장확인", "품질 및 법규 적합성 검토"],
+    summaries: [
+      "설계 의도와 현장 시공 조건이 어긋나지 않도록 공정별 확인 사항을 점검했습니다.",
+      "공사 단계의 주요 쟁점과 사용승인 전 확인 범위를 정리해 감리 업무를 수행했습니다.",
+      "현장 상황, 시공 품질, 관계 법규 검토를 함께 보며 안정적인 준공 흐름을 지원했습니다.",
+    ],
+  },
+  "building-appraisal": {
+    titles: ["건축물 하자 감정", "기존 건축물 현황조사", "손상 원인 기술검토", "분쟁 관련 의견서", "사용성 및 안전성 검토"],
+    summaries: [
+      "건축물의 현황과 손상 범위를 객관적으로 확인하고 기술적 쟁점을 정리했습니다.",
+      "사진 기록, 도면 확인, 현장 조사를 바탕으로 감정 의견의 근거를 구성했습니다.",
+      "분쟁 상황에서 필요한 사실관계와 건축적 판단 기준을 명확히 전달한 업무입니다.",
+    ],
+  },
+  "change-of-use": {
+    titles: ["근린생활시설 용도변경", "업무시설 전환 검토", "주거시설 용도 검토", "인허가 도서 작성", "건축물대장 정리 지원"],
+    summaries: [
+      "현재 건축물 조건과 변경하려는 용도의 법적 가능 범위를 함께 검토했습니다.",
+      "피난, 주차, 면적, 용도 기준을 확인해 인허가 진행에 필요한 도서를 정리했습니다.",
+      "관계 기관 협의와 행정 절차를 고려해 용도 전환의 실무 흐름을 지원했습니다.",
+    ],
+  },
+  remodeling: {
+    titles: ["노후 건축물 리모델링", "주거공간 개선 설계", "공용부 환경개선", "외장 및 동선 재정비", "기존 시설 활용도 검토"],
+    summaries: [
+      "기존 건축물의 구조와 사용 조건을 살펴 현실적인 개선 방향을 제안했습니다.",
+      "공간 활용도와 공사 범위를 함께 검토해 단계적으로 실행 가능한 계획을 정리했습니다.",
+      "노후화된 공간의 사용성과 이미지를 회복할 수 있도록 리모델링 기준을 구성했습니다.",
+    ],
+  },
+  "competition-design": {
+    titles: ["공공건축 현상설계", "주거단지 설계 제안", "커뮤니티 시설 계획안", "공간 전략 제안서", "프레젠테이션 패널 구성"],
+    summaries: [
+      "대지 맥락과 프로그램의 관계를 읽어 설계 개념과 공간 전략을 제안했습니다.",
+      "배치, 동선, 외부공간의 질서를 중심으로 평가자가 이해하기 쉬운 안을 구성했습니다.",
+      "기획 의도와 설계 방향이 한눈에 전달되도록 도면과 설명 체계를 정리했습니다.",
+    ],
+  },
+};
+
+function makeProjects(categoryId) {
+  const text = projectText[categoryId];
+  return Array.from({ length: 25 }, (_, index) => ({
+    title: `${projectLocations[index]} ${text.titles[index % text.titles.length]}`,
+    summary: text.summaries[index % text.summaries.length],
+  }));
+}
+
 const categories = [
   {
     id: "architecture-design",
     label: "건축설계",
     english: "Architecture Design",
     description: "계획의 방향부터 설계도서 작성까지 프로젝트의 기본 질서를 정리한 실적입니다.",
-    projects: [
-      "공동주택 신축 설계용역",
-      "주거단지 기본계획 수립",
-      "근린생활시설 건축설계",
-      "도시형 생활주택 설계용역",
-      "복합 주거시설 계획안",
-      "공용부 개선 설계 검토",
-    ],
+    projects: makeProjects("architecture-design"),
   },
   {
     id: "construction-supervision",
     label: "건축감리",
     english: "Construction Supervision",
     description: "현장 조건과 설계 의도가 시공 과정에서 유지되도록 확인한 감리 관련 실적입니다.",
-    projects: [
-      "공동주택 공사감리",
-      "근린생활시설 현장 감리",
-      "주거시설 시공 적정성 검토",
-      "공사 단계별 현장 확인",
-      "사용승인 전 감리 검토",
-      "품질 및 법규 적합성 검토",
-    ],
+    projects: makeProjects("construction-supervision"),
   },
   {
     id: "building-appraisal",
     label: "건축감정",
     english: "Building Appraisal",
     description: "건축물 현황과 기술적 쟁점을 객관적으로 검토한 감정 및 의견서 관련 실적입니다.",
-    projects: [
-      "건축물 하자 감정",
-      "구조 및 마감 손상 현황 조사",
-      "분쟁 관련 기술 의견서",
-      "기존 건축물 상태 검토",
-      "누수 및 균열 원인 검토",
-      "건축물 사용성 검토",
-    ],
+    projects: makeProjects("building-appraisal"),
   },
   {
     id: "change-of-use",
     label: "용도변경",
     english: "Change of Use",
     description: "법규와 공간 조건을 함께 검토해 용도 전환 가능성을 정리한 실적입니다.",
-    projects: [
-      "근린생활시설 용도변경",
-      "업무시설 전환 검토",
-      "주거시설 용도 검토",
-      "인허가 도서 작성",
-      "관계 기관 협의 대응",
-      "건축물대장 정리 지원",
-    ],
+    projects: makeProjects("change-of-use"),
   },
   {
     id: "remodeling",
     label: "리모델링",
     english: "Remodeling",
     description: "기존 건축물의 활용성과 공간 질서를 다시 정리한 리모델링 관련 실적입니다.",
-    projects: [
-      "노후 건축물 리모델링",
-      "주거공간 개선 설계",
-      "공용부 환경 개선",
-      "외장 및 내부 동선 재정비",
-      "기존 시설 활용도 검토",
-      "리모델링 인허가 대응",
-    ],
+    projects: makeProjects("remodeling"),
   },
   {
     id: "competition-design",
     label: "현상설계",
     english: "Competition Design",
     description: "기획 의도와 공간 전략을 제안서와 프레젠테이션으로 구성한 현상설계 실적입니다.",
-    projects: [
-      "공공건축 현상설계",
-      "주거단지 설계 제안",
-      "커뮤니티 시설 계획안",
-      "공간 전략 제안서",
-      "배치 및 동선 계획안",
-      "프레젠테이션 패널 구성",
-    ],
+    projects: makeProjects("competition-design"),
   },
 ];
 ---
@@ -129,7 +174,22 @@ const categories = [
     categories.map((category) => (
       <section class="section-shell portfolio-panel" id={category.id} data-portfolio-panel={category.id}>
         <div class="portfolio-panel__head">
-          <a class="portfolio-back" href="/portfolio/" data-portfolio-back>뒤로가기</a>
+          <nav class="portfolio-tab-nav" aria-label="포트폴리오 업무 탭">
+            {categories.map((tab, index) => (
+              <a
+                class:list={[
+                  "portfolio-tab-link",
+                  { "is-active": tab.id === category.id },
+                ]}
+                href={`#${tab.id}`}
+                data-portfolio-jump={tab.id}
+                aria-current={tab.id === category.id ? "page" : undefined}
+              >
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                {tab.label}
+              </a>
+            ))}
+          </nav>
           <div class="section-intro">
             <p class="section-kicker">{category.english}</p>
             <h2>{category.label}</h2>
@@ -139,7 +199,7 @@ const categories = [
 
         <div class="portfolio-project-grid">
           {category.projects.map((project, index) => (
-            <a class="portfolio-project-card" href="/portfolio/" aria-label={`${project} 세부 실적 준비 중`}>
+            <a class="portfolio-project-card" href="/portfolio/" aria-label={`${project.title} 세부 실적 준비 중`}>
               <div
                 class:list={[
                   "portfolio-project-card__thumb",
@@ -147,8 +207,8 @@ const categories = [
                 ]}
               ></div>
               <span class="preview-kicker">{String(index + 1).padStart(2, "0")}</span>
-              <h3>{project}</h3>
-              <p>세부 실적 자료는 추후 프로젝트 이미지와 함께 업데이트될 예정입니다.</p>
+              <h3>{project.title}</h3>
+              <p>{project.summary}</p>
             </a>
           ))}
         </div>
@@ -171,7 +231,7 @@ const categories = [
       const overview = document.querySelector("[data-portfolio-overview]");
       const panels = Array.from(document.querySelectorAll("[data-portfolio-panel]"));
       const openLinks = Array.from(document.querySelectorAll("[data-portfolio-open]"));
-      const backLinks = Array.from(document.querySelectorAll("[data-portfolio-back]"));
+      const tabLinks = Array.from(document.querySelectorAll("[data-portfolio-jump]"));
       const panelIds = new Set(panels.map((panel) => panel.dataset.portfolioPanel));
 
       if (!overview || panels.length === 0) return;
@@ -181,6 +241,10 @@ const categories = [
         panels.forEach((panel) => {
           panel.hidden = true;
           panel.classList.remove("is-active");
+        });
+        tabLinks.forEach((link) => {
+          link.classList.remove("is-active");
+          link.removeAttribute("aria-current");
         });
       };
 
@@ -195,6 +259,16 @@ const categories = [
           const isActive = panel.dataset.portfolioPanel === id;
           panel.hidden = !isActive;
           panel.classList.toggle("is-active", isActive);
+        });
+
+        tabLinks.forEach((link) => {
+          const isActive = link.dataset.portfolioJump === id;
+          link.classList.toggle("is-active", isActive);
+          if (isActive) {
+            link.setAttribute("aria-current", "page");
+          } else {
+            link.removeAttribute("aria-current");
+          }
         });
 
         const activePanel = document.querySelector(`[data-portfolio-panel="${id}"]`);
@@ -220,12 +294,13 @@ const categories = [
         });
       });
 
-      backLinks.forEach((link) => {
+      tabLinks.forEach((link) => {
         link.addEventListener("click", (event) => {
+          const id = link.dataset.portfolioJump;
+          if (!id) return;
           event.preventDefault();
-          history.pushState(null, "", window.location.pathname);
-          showOverview();
-          overview.scrollIntoView({ behavior: "smooth", block: "start" });
+          history.pushState(null, "", `#${id}`);
+          showPanel(id);
         });
       });
 
