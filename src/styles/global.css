@@ -109,8 +109,8 @@ h3 {
 }
 
 .brand-name {
-  font-size: clamp(20px, 2vw, 28px);
-  line-height: 1.15;
+  font-size: clamp(18px, 1.6vw, 24px);
+  line-height: 1.2;
 }
 
 .nav {
@@ -163,16 +163,18 @@ h3 {
 
 .hero h1,
 .page-intro h1 {
-  max-width: 900px;
-  font-size: clamp(44px, 5vw, 76px);
-  line-height: 1.06;
+  max-width: 780px;
+  font-size: clamp(32px, 3.8vw, 52px);
+  line-height: 1.16;
+  letter-spacing: -0.04em;
 }
 
 .lead {
-  max-width: 720px;
-  margin-top: 28px;
+  max-width: 680px;
+  margin-top: 24px;
   color: var(--muted);
-  font-size: clamp(19px, 2vw, 24px);
+  font-size: clamp(16px, 1.3vw, 18px);
+  line-height: 1.75;
 }
 
 .hero-actions {
@@ -240,7 +242,7 @@ h3 {
 
 .scope-item strong {
   display: block;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
 }
 
@@ -248,7 +250,8 @@ h3 {
   display: block;
   margin-top: 4px;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .metric-grid {
@@ -265,7 +268,7 @@ h3 {
 
 .metric strong {
   display: block;
-  font-size: 28px;
+  font-size: 24px;
   line-height: 1;
   letter-spacing: -0.04em;
 }
@@ -291,9 +294,9 @@ h3 {
 }
 
 .section-head h2 {
-  max-width: 780px;
-  font-size: clamp(30px, 3.2vw, 48px);
-  line-height: 1.16;
+  max-width: 720px;
+  font-size: clamp(26px, 2.2vw, 36px);
+  line-height: 1.22;
 }
 
 .service-grid,
@@ -311,13 +314,14 @@ h3 {
 
 .service-card h3 {
   margin-top: 18px;
-  font-size: 28px;
+  font-size: 22px;
 }
 
 .service-card p {
   margin-top: 14px;
   color: var(--muted);
-  font-size: 17px;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
 .principle-card {
@@ -326,13 +330,14 @@ h3 {
 }
 
 .principle-card h3 {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .principle-card p {
   margin-top: 14px;
   color: var(--muted);
-  font-size: 17px;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
 .narrative-section {
@@ -348,8 +353,8 @@ h3 {
 
 .narrative-grid h2 {
   max-width: 560px;
-  font-size: clamp(30px, 3vw, 44px);
-  line-height: 1.18;
+  font-size: clamp(26px, 2.2vw, 34px);
+  line-height: 1.22;
 }
 
 .narrative-copy {
@@ -359,7 +364,8 @@ h3 {
 
 .narrative-copy p {
   color: var(--muted);
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
 .feature-strip {
@@ -373,7 +379,7 @@ h3 {
 
 .feature-item strong {
   display: block;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -381,6 +387,7 @@ h3 {
   margin-top: 10px;
   color: var(--muted);
   font-size: 16px;
+  line-height: 1.75;
 }
 
 .contact-section {
@@ -404,14 +411,15 @@ h3 {
 
 .contact-card h2 {
   max-width: 520px;
-  font-size: clamp(30px, 3vw, 44px);
-  line-height: 1.16;
+  font-size: clamp(26px, 2.2vw, 34px);
+  line-height: 1.22;
 }
 
 .contact-copy p:last-child {
   margin-top: 18px;
   color: rgba(245, 242, 236, 0.8);
-  font-size: 17px;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
 .contact-list {
@@ -428,15 +436,44 @@ h3 {
   display: block;
   margin-top: 8px;
   color: #ffffff;
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 600;
   line-height: 1.35;
 }
 
 .contact-value.small {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.92);
+}
+
+.hero h1,
+.page-intro h1,
+.section-head h2,
+.narrative-grid h2,
+.contact-card h2,
+.lead,
+.scope-item strong,
+.scope-item span,
+.metric p,
+.service-card h3,
+.service-card p,
+.principle-card h3,
+.principle-card p,
+.narrative-copy p,
+.feature-item strong,
+.feature-item p,
+.contact-copy p:last-child,
+.page-copy p {
+  word-break: keep-all;
+}
+
+@media (max-width: 1240px) {
+  .service-grid,
+  .principle-grid,
+  .feature-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .page-intro {
@@ -452,7 +489,8 @@ h3 {
 
 .page-copy p {
   color: var(--muted);
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
 .site-footer {
@@ -485,9 +523,6 @@ h3 {
   .narrative-grid,
   .contact-card,
   .section-head,
-  .service-grid,
-  .principle-grid,
-  .feature-strip,
   .metric-grid {
     grid-template-columns: 1fr;
   }
@@ -537,6 +572,33 @@ h3 {
   .narrative-copy p,
   .contact-copy p:last-child {
     font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .brand-name {
+    font-size: 20px;
+  }
+
+  .hero h1,
+  .page-intro h1 {
+    font-size: clamp(30px, 7vw, 36px);
+    line-height: 1.18;
+  }
+
+  .section-head h2,
+  .narrative-grid h2,
+  .contact-card h2 {
+    font-size: clamp(24px, 5.5vw, 28px);
+    line-height: 1.22;
+  }
+
+  .service-card h3 {
+    font-size: 20px;
+  }
+
+  .principle-card h3,
+  .feature-item strong {
+    font-size: 18px;
   }
 
   .hero-actions {
@@ -575,5 +637,11 @@ h3 {
 
   .page-intro {
     padding: 26px 0 72px;
+  }
+
+  .service-grid,
+  .principle-grid,
+  .feature-strip {
+    grid-template-columns: 1fr;
   }
 }
