@@ -2,8 +2,8 @@
 import "../styles/global.css";
 
 const {
-  title = "(주)신화중재기술사 건축사사무소 | 건축설계",
-  description = "공동주택, 주거단지, 리모델링, 인허가 협의 등 건축설계 관련 업무를 수행하는 건축사사무소입니다.",
+  title = "(주)신화중재기술사 건축사사무소 | 주거와 도시를 위한 건축설계",
+  description = "공동주택, 주거단지, 리모델링, 인허가 협의까지 실현 가능한 흐름을 설계하는 건축사사무소입니다.",
 } = Astro.props;
 ---
 
@@ -19,7 +19,7 @@ const {
   </head>
   <body>
     <header class="site-header">
-      <div class="wrap header-inner">
+      <div class="wrap header-shell">
         <a class="brand" href="/">
           <span class="brand-mark">SHJJ ARCHITECTS</span>
           <span class="brand-name">(주)신화중재기술사 건축사사무소</span>
@@ -28,7 +28,9 @@ const {
         <nav class="nav">
           <a href="/">홈</a>
           <a href="/about/">회사소개</a>
-          <a href="/#contact">문의</a>
+          <a href="/portfolio/">포트폴리오</a>
+          <a href="/performance/">주요 실적</a>
+          <a href="/contact/">협업 문의</a>
         </nav>
       </div>
     </header>
@@ -40,11 +42,34 @@ const {
     </main>
 
     <footer class="site-footer">
-      <div class="wrap footer-inner">
-        <p class="footer-brand">(주)신화중재기술사 건축사사무소</p>
-        <div class="footer-meta">
-          <p>Architecture / Planning / Consulting</p>
-          <p>© 2026 SHJJ Architects. All rights reserved.</p>
+      <div class="wrap footer-shell">
+        <div class="footer-brand-block">
+          <p class="brand-mark">SHJJ ARCHITECTS</p>
+          <p class="footer-brand">(주)신화중재기술사 건축사사무소</p>
+          <p class="footer-note">
+            주거와 도시의 흐름을 읽고, 계획부터 협의와 실행까지 이어지는 설계를 제안합니다.
+          </p>
+        </div>
+
+        <div class="footer-grid">
+          <div class="footer-column">
+            <p class="footer-label">Explore</p>
+            <div class="footer-links">
+              <a href="/about/">회사소개</a>
+              <a href="/portfolio/">포트폴리오</a>
+              <a href="/performance/">주요 실적</a>
+              <a href="/contact/">협업 문의</a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <p class="footer-label">Contact</p>
+            <div class="footer-contact">
+              <a href="mailto:shjj2014@naver.com">협업 문의: shjj2014@naver.com</a>
+              <a href="tel:0222023293">전화: 02-2202-3293</a>
+              <p>서울특별시 송파구 오금로 148, 302호 (05620)</p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
