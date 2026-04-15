@@ -1,53 +1,150 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageSwitch from "../components/PageSwitch.astro";
+
+const categories = [
+  {
+    id: "architecture-design",
+    label: "건축설계",
+    english: "Architecture Design",
+    description: "계획의 방향부터 설계도서 작성까지 프로젝트의 기본 질서를 정리한 실적입니다.",
+    projects: [
+      "공동주택 신축 설계용역",
+      "주거단지 기본계획 수립",
+      "근린생활시설 건축설계",
+      "도시형 생활주택 설계용역",
+      "복합 주거시설 계획안",
+      "공용부 개선 설계 검토",
+    ],
+  },
+  {
+    id: "construction-supervision",
+    label: "건축감리",
+    english: "Construction Supervision",
+    description: "현장 조건과 설계 의도가 시공 과정에서 유지되도록 확인한 감리 관련 실적입니다.",
+    projects: [
+      "공동주택 공사감리",
+      "근린생활시설 현장 감리",
+      "주거시설 시공 적정성 검토",
+      "공사 단계별 현장 확인",
+      "사용승인 전 감리 검토",
+      "품질 및 법규 적합성 검토",
+    ],
+  },
+  {
+    id: "building-appraisal",
+    label: "건축감정",
+    english: "Building Appraisal",
+    description: "건축물 현황과 기술적 쟁점을 객관적으로 검토한 감정 및 의견서 관련 실적입니다.",
+    projects: [
+      "건축물 하자 감정",
+      "구조 및 마감 손상 현황 조사",
+      "분쟁 관련 기술 의견서",
+      "기존 건축물 상태 검토",
+      "누수 및 균열 원인 검토",
+      "건축물 사용성 검토",
+    ],
+  },
+  {
+    id: "change-of-use",
+    label: "용도변경",
+    english: "Change of Use",
+    description: "법규와 공간 조건을 함께 검토해 용도 전환 가능성을 정리한 실적입니다.",
+    projects: [
+      "근린생활시설 용도변경",
+      "업무시설 전환 검토",
+      "주거시설 용도 검토",
+      "인허가 도서 작성",
+      "관계 기관 협의 대응",
+      "건축물대장 정리 지원",
+    ],
+  },
+  {
+    id: "remodeling",
+    label: "리모델링",
+    english: "Remodeling",
+    description: "기존 건축물의 활용성과 공간 질서를 다시 정리한 리모델링 관련 실적입니다.",
+    projects: [
+      "노후 건축물 리모델링",
+      "주거공간 개선 설계",
+      "공용부 환경 개선",
+      "외장 및 내부 동선 재정비",
+      "기존 시설 활용도 검토",
+      "리모델링 인허가 대응",
+    ],
+  },
+  {
+    id: "competition-design",
+    label: "현상설계",
+    english: "Competition Design",
+    description: "기획 의도와 공간 전략을 제안서와 프레젠테이션으로 구성한 현상설계 실적입니다.",
+    projects: [
+      "공공건축 현상설계",
+      "주거단지 설계 제안",
+      "커뮤니티 시설 계획안",
+      "공간 전략 제안서",
+      "배치 및 동선 계획안",
+      "프레젠테이션 패널 구성",
+    ],
+  },
+];
 ---
 
 <BaseLayout
   title="포트폴리오 | (주)신화중재기술사 건축사사무소"
-  description="공동주택, 주거단지, 리모델링 중심의 포트폴리오 방향을 소개합니다."
+  description="건축설계, 건축감리, 건축감정, 용도변경, 리모델링, 현상설계 실적을 업무 범위별로 소개합니다."
 >
   <section class="page-hero">
     <p class="eyebrow">Portfolio</p>
-    <h1>주거 중심 프로젝트에서 어떤 기준으로 공간과 흐름을 다루는지 보여드립니다.</h1>
+    <h1>업무 범위별 실적을 확인할 수 있도록 여섯 가지 테마로 포트폴리오를 정리했습니다.</h1>
     <p class="lead">
-      실제 프로젝트를 바라보는 방식이 드러나도록, 공동주택, 주거단지, 리모델링을
-      중심으로 대표 업무 유형을 정리했습니다.
+      주요 실적에서 선택한 업무 범위와 연결되며, 각 테마 안에서 프로젝트 성격과 실적명을
+      한눈에 확인할 수 있도록 구성했습니다.
     </p>
     <PageSwitch currentPath={Astro.url.pathname} />
   </section>
 
   <section class="section-shell">
-    <div class="project-grid">
-      <article class="project-card">
-        <div class="project-visual project-visual--a"></div>
-        <span class="preview-kicker">Housing</span>
-        <h3>공동주택 설계</h3>
-        <p>주거 계획, 동선, 공용과 전용 공간의 균형을 함께 검토하는 설계 접근입니다.</p>
-      </article>
-
-      <article class="project-card">
-        <div class="project-visual project-visual--b"></div>
-        <span class="preview-kicker">District</span>
-        <h3>주거단지 검토</h3>
-        <p>대지와 배치, 생활 환경과 연결되는 단지의 흐름을 중심으로 계획을 정리합니다.</p>
-      </article>
-
-      <article class="project-card">
-        <div class="project-visual project-visual--c"></div>
-        <span class="preview-kicker">Remodeling</span>
-        <h3>리모델링 · 용도 검토</h3>
-        <p>기존 공간의 가치와 활용성, 실제 조정 가능성을 함께 보는 재정비 작업입니다.</p>
-      </article>
+    <div class="portfolio-tabs" aria-label="포트폴리오 업무 범위">
+      {categories.map((category) => <a href={`#${category.id}`}>{category.label}</a>)}
     </div>
   </section>
+
+  {
+    categories.map((category) => (
+      <section class="section-shell portfolio-category" id={category.id}>
+        <div class="section-intro">
+          <p class="section-kicker">{category.english}</p>
+          <h2>{category.label}</h2>
+        </div>
+
+        <p class="portfolio-category__description">{category.description}</p>
+
+        <div class="portfolio-project-grid">
+          {category.projects.map((project, index) => (
+            <a class="portfolio-project-card" href="/portfolio/" aria-label={`${project} 세부 실적 준비 중`}>
+              <div
+                class:list={[
+                  "portfolio-project-card__thumb",
+                  `portfolio-project-card__thumb--${(index % 6) + 1}`,
+                ]}
+              ></div>
+              <span class="preview-kicker">{String(index + 1).padStart(2, "0")}</span>
+              <h3>{project}</h3>
+              <p>세부 실적 자료는 추후 프로젝트 이미지와 함께 업데이트될 예정입니다.</p>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))
+  }
 
   <section class="section-shell section-shell--tinted">
     <div class="note-box">
       <p class="section-kicker">Note</p>
       <p>
-        구체적인 프로젝트 자료와 세부 범위는 협업 문의 시 안내드릴 수 있습니다.
-        현재 페이지는 수행 방향과 포트폴리오의 구조를 이해할 수 있도록 정리한 개요입니다.
+        현재 포트폴리오는 업무 범위와 실적 구조를 먼저 확인할 수 있도록 구성한 단계입니다.
+        프로젝트별 상세 페이지와 실제 사진 자료는 추후 순차적으로 연결할 수 있습니다.
       </p>
     </div>
   </section>
