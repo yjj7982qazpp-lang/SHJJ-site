@@ -79,7 +79,7 @@ import PageSwitch from "../components/PageSwitch.astro";
         window.clearInterval(timerId);
         timerId = window.setInterval(() => {
           setStage((activeIndex + 1) % dots.length);
-        }, 5200);
+        }, 3000);
       };
 
       dots.forEach((dot) => {
