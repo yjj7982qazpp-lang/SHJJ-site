@@ -373,7 +373,7 @@ p {
 
 .stage-card__visual {
   position: relative;
-  min-height: 720px;
+  min-height: 620px;
   background:
     linear-gradient(135deg, rgba(20, 92, 183, 0.16) 0%, rgba(20, 92, 183, 0.04) 28%, rgba(255, 255, 255, 0) 48%),
     radial-gradient(circle at right center, rgba(8, 20, 36, 0.12), transparent 24%),
@@ -439,8 +439,8 @@ p {
 .stage-card__content {
   position: relative;
   z-index: 2;
-  max-width: 800px;
-  padding: 270px 42px 44px;
+  max-width: 820px;
+  padding: 205px 42px 36px;
 }
 
 .stage-card__content .eyebrow {
@@ -450,21 +450,21 @@ p {
 .stage-card__title {
   display: inline;
   color: #fff;
-  font-size: clamp(40px, 4.8vw, 64px);
-  line-height: 1.28;
-  background: rgba(20, 92, 183, 0.48);
+  font-size: clamp(38px, 4.25vw, 58px);
+  line-height: 1.48;
+  background: rgba(20, 92, 183, 0.9);
   box-shadow:
-    10px 0 0 rgba(20, 92, 183, 0.48),
-    -10px 0 0 rgba(20, 92, 183, 0.48);
+    10px 0 0 rgba(20, 92, 183, 0.9),
+    -10px 0 0 rgba(20, 92, 183, 0.9);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
-  padding: 0.02em 0 0.08em;
+  padding: 0.01em 0 0.04em;
 }
 
 .stage-card .lead {
   max-width: 700px;
-  margin-top: 30px;
-  padding: 20px 22px;
+  margin-top: 22px;
+  padding: 18px 20px;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: var(--shadow-sm);
   font-size: clamp(16px, 1.25vw, 19px);
@@ -474,8 +474,8 @@ p {
 
 .stage-card__overview {
   position: absolute;
-  right: 36px;
-  bottom: 36px;
+  right: 34px;
+  bottom: 34px;
   z-index: 2;
   width: min(350px, calc(100% - 72px));
   background: rgba(255, 255, 255, 0.92);
@@ -531,7 +531,7 @@ p {
 .stage-card__pager {
   position: absolute;
   left: 50%;
-  bottom: 24px;
+  bottom: 18px;
   z-index: 2;
   display: flex;
   gap: 10px;
@@ -658,6 +658,11 @@ p {
   color: var(--text);
   font-size: clamp(25px, 2vw, 34px);
   line-height: 1.16;
+}
+
+.service-tile h3 {
+  font-size: clamp(23px, 1.65vw, 30px);
+  white-space: nowrap;
 }
 
 .module-card p,
@@ -1495,12 +1500,12 @@ p {
   }
 
   .stage-card__visual {
-    min-height: 920px;
+    min-height: 780px;
   }
 
   .stage-card__content {
     max-width: none;
-    padding-top: 220px;
+    padding-top: 180px;
   }
 
   .stage-card__overview {
@@ -1622,7 +1627,7 @@ p {
   }
 
   .stage-card__visual {
-    min-height: 860px;
+    min-height: 760px;
   }
 
   .stage-card__badge {
@@ -1633,12 +1638,16 @@ p {
   }
 
   .stage-card__content {
-    padding: 168px 24px 24px;
+    padding: 138px 24px 24px;
   }
 
   .stage-card__title {
     font-size: clamp(34px, 9vw, 50px);
-    line-height: 1.12;
+    line-height: 1.38;
+  }
+
+  .service-tile h3 {
+    white-space: normal;
   }
 
   .stage-card .lead {
